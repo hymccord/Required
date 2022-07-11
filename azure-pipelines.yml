@@ -1,0 +1,42 @@
+trigger:
+  - main
+  - release/*
+
+pr:
+  - main
+  - release/*
+
+pool:
+  vmimage: windows-2022
+
+jobs:
+  - job: Build
+    steps:
+      - task: UseDotNet@2
+        displayName: 'Use .NET Core sdk'
+        inputs:
+          packageType: sdk
+          version: 6.0.x
+          installationPath: $(Agent.ToolsDirectory)/dotnet
+
+      - task: NuGetToolInstaller@1
+        displayName: Install NuGet 6.0
+        inputs:
+          versionSpec: 6.0.0
+
+      # Install NerdBank GitVersioning
+      - task: DotNetCoreCLI@2
+        displayName: Install NBGV tool
+        inputs:
+          command: custom
+          custom: tool
+          arguments: update -g nbgv
+
+      # Set Build Version
+      - script: nbgv cloud
+        displayName: Set NBGV version
+
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: build
+          configuration: Release
