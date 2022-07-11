@@ -1,0 +1,43 @@
+﻿<Project>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>System.Diagnostics.CodeAnalysis</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Hank McCord</Authors>
+    <PackageTags>C# 11;required;required members;required properties</PackageTags>
+    <Description>
+      A source code only package which allows you to use C# 11's required members feature in older target frameworks like .NET Standard 2.0 or the "old" .NET Framework. 
+    </Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>contentFiles</ContentTargetFolders>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="@(Compile)">
+      <Pack>true</Pack>
+      <PackagePath>$(ContentTargetFolders)\cs\netstandard2.0\$(PackageId)\%(RecursiveDir)</PackagePath>
+    </Compile>
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <Target Name="Compile" />
+  <Target Name="CopyFilesToOutputDirectory" />
+
+</Project>
