@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">$(MSBuildThisFileDirectory)artifacts</PackageOutputPath>
-    <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)artifacts</RestoreAdditionalProjectSources>
+    <!-- <PackageOutputPath Condition="'$(PackageOutputPath)' == ''">$(MSBuildThisFileDirectory)artifacts</PackageOutputPath> -->
+    <!-- <RestoreAdditionalProjectSources>$(MSBuildThisFileDirectory)artifacts</RestoreAdditionalProjectSources> -->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.107" PrivateAssets="all" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.107" PrivateAssets="all" Condition="!Exists('packages.config')" />
   </ItemGroup>
 </Project>

@@ -15,12 +15,15 @@
     <Description>
       A source code only package which allows you to use C# 11's required members feature in older target frameworks like .NET Standard 2.0 or the "old" .NET Framework. 
     </Description>
+    <PackageProjectUrl>https://github.com/InKahootz/Required</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InKahootz/Required.git</RepositoryUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <ContentTargetFolders>contentFiles</ContentTargetFolders>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
@@ -31,8 +34,19 @@
   <ItemGroup>
     <Compile Update="@(Compile)">
       <Pack>true</Pack>
-      <PackagePath>$(ContentTargetFolders)\cs\netstandard2.0\$(PackageId)\%(RecursiveDir)</PackagePath>
+      <PackagePath>
+        contentFiles\cs\netstandard2.0\$(PackageId)\%(RecursiveDir);
+        content\netstandard2.0\$(PackageId)\%(RecursiveDir);
+      </PackagePath>
     </Compile>
+    <None Include="build/**/*.*">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </None>
+    <None Include="..\..\assets\icon128x128.png">
+      <Pack>true</Pack>
+      <PackagePath>icon.png</PackagePath>
+    </None>
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
