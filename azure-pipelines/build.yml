@@ -1,0 +1,30 @@
+parameters:
+- name: windowsPool
+  type: object
+  default:
+    vmImage: windows-2022
+
+jobs:
+- job: Windows
+  pool: ${{ parameters.windowsPool }}
+  steps:
+  - checkout: self
+    clean: true
+    submodules: true
+  - template: install-dependencies.yml
+
+  - script: nbgv cloud -c
+    displayName: ⚙ Set build number
+
+  - template: dotnet.yml
+
+- job: WrapUp
+  dependsOn:
+  - Windows
+  pool: ${{ parameters.windowsPool }}
+  condition: succeededOrFailed()
+  steps:
+  - checkout: self
+    clean: true
+  - template: install-dependencies.yml
+  - template: publish-packages.yml

@@ -1,0 +1,25 @@
+steps:
+
+  - task: NuGetAuthenticate@0
+    displayName: 🔏 Authenticate NuGet feeds
+    inputs:
+      forceReinstallCredentialProvider: true
+
+  - task: UseDotNet@2
+    displayName: 🔧 Install .NET Core SDK
+    inputs:
+      packageType: sdk
+      version: 6.0.x
+      installationPath: $(Agent.ToolsDirectory)/dotnet
+
+  - task: NuGetToolInstaller@1
+    displayName: 🔧 Install NuGet 6.0
+    inputs:
+      versionSpec: 6.0.0
+
+  - task: DotNetCoreCLI@2
+    displayName: 🔧 Install NBGV tool
+    inputs:
+      command: custom
+      custom: tool
+      arguments: update -g nbgv

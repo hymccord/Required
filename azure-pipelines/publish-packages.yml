@@ -1,0 +1,8 @@
+steps:
+- download: current
+  displayName: 🔻 Download packages
+  artifact: packages
+
+- powershell: dotnet nuget push "$(Resolve-Path '$(Pipeline.Workspace)\packages\')*.nupkg" -s $(ci_feed) -k az --skip-duplicate
+  displayName: 📦 Push packages to CI feed
+  condition: and(succeeded(), ne(variables['ci_feed'], ''), ne(variables['Build.Reason'], 'PullRequest'))

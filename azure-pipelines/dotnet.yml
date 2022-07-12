@@ -1,0 +1,10 @@
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: 🛠 dotnet pack
+    inputs:
+      command: pack
+      packDirectory: '$(Build.ArtifactsStagingDirectory)/packages'
+
+  - publish: $(Build.ArtifactsStagingDirectory)/packages
+    artifact: packages
+    displayName: 📢 Publish artifacts
