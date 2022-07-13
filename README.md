@@ -99,16 +99,12 @@ attributes are not applied and the attributes may therefore appear in code cover
 ## Building
 
 Because the package consists of source files, building works differently than a normal .NET project.
-In essence, no build has to be made at all. Instead, the `*.cs` files are packaged into a NuGet package through custom packaging targets.
-
-The solution contains a `_build` project which automatically performs these tasks though. You can then
-find the resulting NuGet package file in the `artifacts` folder.
+In essence, no build has to be made at all. Instead, the `*.cs` files are packaged into a NuGet package
+through custom packaging targets.
 
 ## Contributing
 
-I don't expect this package to require many changes, but if something is not working for you or
-if you think that the source file should change, feel free to create an issue or Pull Request.
-I will be happy to discuss and potentially integrate your ideas!
+Open to any contributions!
 
 ## License
 
