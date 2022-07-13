@@ -11,14 +11,21 @@
 
   <PropertyGroup>
     <Authors>Hank McCord</Authors>
+    <Company>$(Authors)</Company>
+
     <PackageTags>c#;11.0;required;members;properties</PackageTags>
     <Description>
       A source code only package which allows you to use C# 11's required members feature in older target frameworks like .NET Standard 2.0 or the "old" .NET Framework. 
     </Description>
     <PackageProjectUrl>https://github.com/InKahootz/Required</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/InKahootz/Required.git</RepositoryUrl>
-    <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageFileReadMe>README.md</PackageFileReadMe>
+    <PackageReleaseNotes>https://github.com/InKahootz/Required/releases</PackageReleaseNotes>
+
+    <RepositoryUrl>https://github.com/InKahootz/Required</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -33,21 +40,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="@(Compile)">
-      <Pack>true</Pack>
+    <Compile Update="@(Compile)" Pack="true">
       <PackagePath>
         contentFiles\cs\netstandard2.0\$(PackageId)\%(RecursiveDir);
         content\netstandard2.0\$(PackageId)\%(RecursiveDir);
       </PackagePath>
     </Compile>
-    <None Include="build/**/*.*">
-      <Pack>true</Pack>
-      <PackagePath>build</PackagePath>
-    </None>
-    <None Include="..\..\assets\icon128x128.png">
-      <Pack>true</Pack>
-      <PackagePath>icon.png</PackagePath>
-    </None>
+    <None Include="build/**/*.*" Pack="true" PackagePath="build" />
+    <None Include="..\..\assets\icon128x128.png" Pack="true" PackagePath="\icon.png" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
