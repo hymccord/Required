@@ -13,7 +13,7 @@ jobs:
     submodules: true
   - template: install-dependencies.yml
 
-  - script: nbgv cloud -c
+  - script: dotnet-gitversion /output buildserver /nofetch
     displayName: ⚙ Set build number
 
   - template: dotnet.yml

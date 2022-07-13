@@ -10,6 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.107" PrivateAssets="all" Condition="!Exists('packages.config')" />
+    <PackageReference Include="GitVersion.MSBuild" Version="5.10.3" PrivateAssets="all" />
   </ItemGroup>
 </Project>
