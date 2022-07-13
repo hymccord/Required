@@ -18,7 +18,7 @@ steps:
       versionSpec: 6.0.0
 
   - task: DotNetCoreCLI@2
-    displayName: 🔧 Install NBGV tool
+    displayName: 🔧 Install GitVersion tool
     inputs:
       command: custom
       custom: tool

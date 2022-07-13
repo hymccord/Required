@@ -34,7 +34,6 @@ jobs:
   - download: CI
     artifact: packages
     displayName: 🔻 Download packages artifact
-    patterns: 'packages/**'
   - task: GitHubRelease@1
     displayName: 📢 GitHub release (create)
     inputs:
