@@ -3,6 +3,7 @@ steps:
     displayName: 🛠 dotnet pack
     inputs:
       command: pack
+      packagesToPack: 'src/**/*.csproj'
       packDirectory: '$(Build.ArtifactsStagingDirectory)/packages'
 
   - publish: $(Build.ArtifactsStagingDirectory)/packages
