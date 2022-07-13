@@ -11,7 +11,7 @@
 
   <PropertyGroup>
     <Authors>Hank McCord</Authors>
-    <PackageTags>C# 11;required;required members;required properties</PackageTags>
+    <PackageTags>c#;11.0;required;members;properties</PackageTags>
     <Description>
       A source code only package which allows you to use C# 11's required members feature in older target frameworks like .NET Standard 2.0 or the "old" .NET Framework. 
     </Description>
@@ -22,6 +22,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <DevelopmentDependency>true</DevelopmentDependency>
     <IsPackable>true</IsPackable>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
