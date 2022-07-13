@@ -44,8 +44,8 @@
 
 namespace System.Runtime.CompilerServices
 {
-    public class RequiredMemberAttribute : Attribute { }
-    public class CompilerFeatureRequiredAttribute : Attribute
+    internal class RequiredMemberAttribute : Attribute { }
+    internal class CompilerFeatureRequiredAttribute : Attribute
     {
         public CompilerFeatureRequiredAttribute(string feature) { }
     }
@@ -53,7 +53,7 @@ namespace System.Runtime.CompilerServices
 
 namespace System.Diagnostics.CodeAnalysis
 {
-    public class SetsRequiredMembersAttribute : Attribute { }
+    internal class SetsRequiredMembersAttribute : Attribute { }
 }
 
 #pragma warning restore
